@@ -45,9 +45,8 @@ public string | null $variable;
 ```
 
 # VOID RETURN TYPES
-```
 If a method returns nothing, it should be indicated with void. This makes it more clear to the users of your code what your intention was when writing it.
-
+```
 // Good
 
 // in a Laravel model
@@ -74,4 +73,99 @@ class Foo
   /** @var string */
   public $bar;
 }
+```
+
+# Enums
+Values in enums should use PascalCase.
+
+```
+enum Suit {  
+  case Clubs;
+  case Diamonds;
+  case Hearts;
+  case Spades;
+}
+
+Suit::Diamonds;
+```
+
+
+#Docblocks
+Don't use docblocks for methods that can be fully type hinted (unless you need a description).
+
+Only add a description when it provides more context than the method signature itself. Use full sentences for descriptions, including a period at the end.
+```
+// Good
+class Url
+{
+  public static function fromString(string $url): Url
+  {
+    // ...
+  }
+}
+
+// Bad: The description is redundant, and the method is fully type-hinted.
+class Url
+{
+  /**
+  * Create a url from a string.
+  *
+  * @param string $url
+  *
+  * @return \Spatie\Url\Url
+  */
+  public static function fromString(string $url): Url
+  {
+    // ...
+  }
+}
+
+```
+
+Always import the classnames in docblocks.
+
+```
+// Good
+use \Spatie\Url\Url
+
+/**
+* @param string $foo
+*
+* @return Url
+  */
+
+// Bad
+
+/**
+* @param string $url
+*
+* @return \Spatie\Url\Url
+  */
+```
+
+Using multiple lines for a docblock, might draw too much attention to it. When possible, docblocks should be written on one line.
+
+```
+// Good
+
+/** @var string */
+/** @test */
+
+// Bad
+
+/**
+* @test
+*/
+  
+```
+
+If a variable has multiple types, the most common occurring type should be first.
+```
+// Good
+
+/** @var \Illuminate\Support\Collection|\SomeWeirdVendor\Collection */
+
+// Bad
+
+/** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection */
 ```
