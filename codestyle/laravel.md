@@ -42,7 +42,10 @@ public ?string $variable;
 
 // Bad
 public string | null $variable;
-#VOID RETURN TYPES
+```
+
+# VOID RETURN TYPES
+```
 If a method returns nothing, it should be indicated with void. This makes it more clear to the users of your code what your intention was when writing it.
 
 // Good
@@ -50,22 +53,25 @@ If a method returns nothing, it should be indicated with void. This makes it mor
 // in a Laravel model
 public function scopeArchived(Builder $query): void
 {
-$query->
-...
+  $query->
+  ...
 }
-#Typed properties
+```
+
+# Typed properties
 You should type a property whenever possible. Don't use a docblock.
 
+```
 // Good
 class Foo
 {
-public string $bar;
+  public string $bar;
 }
 
 // Bad
 class Foo
 {
-/** @var string */
-public $bar;
+  /** @var string */
+  public $bar;
 }
 ```
