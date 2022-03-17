@@ -725,7 +725,7 @@ Again to avoid naming collisions we'll suffix mailables with Mail, as they're of
 
 e.g. AccountActivatedMail or NewEventMail
 
-#Naming Migrations
+# Naming Migrations
 [table]_[action]_[details]
 ### creation of table
 customers_create
