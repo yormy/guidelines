@@ -174,35 +174,34 @@ If a variable has multiple types, the most common occurring type should be first
 # Docblocks for iterables
 When your function gets passed an iterable, you should add a docblock to specify the type of key and value. This will greatly help static analysis tools understand the code, and IDEs to provide autocompletion.
 ```
-    /**
-    * @param $myArray array<int, MyObject>
-    */
-    function someFunction(array $myArray) {
-        //
-    }
+/**
+* @param $myArray array<int, MyObject>
+*/
+function someFunction(array $myArray) {
+    //
+}
 ```
 
 In this example, typedArgument needs a docblock too:
 ```
-    /**
-    * @param $myArray array<int, MyObject>
-    * @param int $typedArgument
-    */
-    function someFunction(array $myArray, int $typedArgument) {
-        //
-    }
+/**
+* @param $myArray array<int, MyObject>
+* @param int $typedArgument
+*/
+function someFunction(array $myArray, int $typedArgument) {
+    //
+}
 ```
 The keys and values of iterables that get returned should always be typed.
 ```
 use \Illuminate\Support\Collection
 
-    /**
-    * @return \Illuminate\Support\Collection<int,SomeObject>
-    */
-    function someFunction(): Collection {
-        //
-    }
-  
+/**
+* @return \Illuminate\Support\Collection<int,SomeObject>
+*/
+function someFunction(): Collection {
+    //
+} 
 ```
 
 If your array or collection has a few fixed keys, you can typehint them too using {} notation.
@@ -224,5 +223,179 @@ use \Illuminate\Support\Collection
 /** @return \Illuminate\Support\Collection<int,SomeObject> */
 function someFunction(): Collection {
     //
+}
+```
+
+
+# Constructor property promotion
+Use constructor property promotion if all properties can be promoted. To make it readable, put each one on a line of its own. Use a comma after the last one.
+```
+// Good
+class MyClass {
+    public function __construct(
+    protected string $firstArgument,
+    protected string $secondArgument,
+) {}
+}
+
+// Bad
+class MyClass {
+protected string $secondArgument
+
+    public function __construct(protected string $firstArgument, string $secondArgument)
+    {
+        $this->secondArgument = $secondArgument;
+    }
+}
+```
+
+
+# Traits
+Each applied trait should go on its own line, and the use keyword should be used for each of them. This will result in clean diffs when traits are added or removed.
+```
+// Good
+
+class MyClass
+{
+  use TraitA;
+  use TraitB;
+}
+
+// Bad
+
+class MyClass
+{
+  use TraitA, TraitB;
+}
+```
+
+# Strings
+When possible prefer string interpolation above sprintf and the . operator.
+```
+// Good
+$greeting = "Hi, I am {$name}.";
+
+// Bad
+$greeting = 'Hi, I am ' . $name . '.';
+```
+
+# Ternary operators
+Every portion of a ternary expression should be on its own line unless it's a really short expression.
+```
+// Good
+$name = $isFoo ? 'foo' : 'bar';
+
+// Bad
+$result = $object instanceof Model ?
+$object->name :
+'A default value';
+```
+
+# If statements
+## BRACKET POSITION
+Always use curly brackets.
+```
+// Good
+if ($condition) {
+  ...
+}
+
+// Bad
+if ($condition) ...
+
+```
+## HAPPY PATH
+Generally a function should have its unhappy path first and its happy path last. In most cases this will cause the happy path being in an unindented part of the function which makes it more readable.
+```
+// Good
+
+if (! $goodCondition) {
+  throw new Exception;
+}
+
+// do work
+
+// Bad
+
+if ($goodCondition) {
+  // do work
+}
+
+throw new Exception;
+```
+
+# AVOID ELSE
+In general, else should be avoided because it makes code less readable. In most cases it can be refactored using early returns. This will also cause the happy path to go last, which is desirable.
+
+```
+// Good
+
+if (! $conditionA) {
+  // condition A failed
+  return;
+}
+
+if (! $conditionB) {
+  // condition A passed, B failed
+  
+  return;
+}
+
+// condition A and B passed
+// Bad
+
+if ($conditionA) {
+  if ($conditionB) {
+    // condition A and B passed
+  }
+  else {
+    // condition A passed, B failed
+  }
+}
+else {
+  // condition A failed
+}
+```
+
+Another option to refactor an else away is using a ternary
+```
+// Good
+
+$condition
+? $this->doSomething();
+: $this->doSomethingElse();
+
+// Bad
+
+if ($condition) {
+  $this->doSomething();
+}
+else {
+  $this->doSomethingElse();
+}
+
+
+```
+# COMPOUND IFS
+In general, separate if statements should be preferred over a compound condition. This makes debugging code easier.
+```
+// Good
+if (! $conditionA) {
+  return;
+}
+
+if (! $conditionB) {
+  return;
+}
+
+if (! $conditionC) {
+  return;
+}
+
+// do stuff
+
+// Bad
+if ($conditionA && $conditionB && $conditionC) {
+  // do stuff
 }
 ```
