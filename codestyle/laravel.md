@@ -169,3 +169,60 @@ If a variable has multiple types, the most common occurring type should be first
 
 /** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection */
 ```
+
+
+# Docblocks for iterables
+When your function gets passed an iterable, you should add a docblock to specify the type of key and value. This will greatly help static analysis tools understand the code, and IDEs to provide autocompletion.
+```
+    /**
+    * @param $myArray array<int, MyObject>
+    */
+    function someFunction(array $myArray) {
+        //
+    }
+```
+
+In this example, typedArgument needs a docblock too:
+```
+    /**
+    * @param $myArray array<int, MyObject>
+    * @param int $typedArgument
+    */
+    function someFunction(array $myArray, int $typedArgument) {
+        //
+    }
+```
+The keys and values of iterables that get returned should always be typed.
+```
+use \Illuminate\Support\Collection
+
+    /**
+    * @return \Illuminate\Support\Collection<int,SomeObject>
+    */
+    function someFunction(): Collection {
+        //
+    }
+  
+```
+
+If your array or collection has a few fixed keys, you can typehint them too using {} notation.
+```
+use \Illuminate\Support\Collection
+
+/**
+* @return array{old: SomeClass, new: SomeClass}
+*/
+function someFunction(): array {
+    //
+}
+```
+
+If there is only one docblock needed, you may use the short version.
+```
+use \Illuminate\Support\Collection
+
+/** @return \Illuminate\Support\Collection<int,SomeObject> */
+function someFunction(): Collection {
+    //
+}
+```
