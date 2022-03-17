@@ -90,7 +90,7 @@ Suit::Diamonds;
 ```
 
 
-#Docblocks
+# Docblocks
 Don't use docblocks for methods that can be fully type hinted (unless you need a description).
 
 Only add a description when it provides more context than the method signature itself. Use full sentences for descriptions, including a period at the end.
