@@ -19,6 +19,7 @@
 - [Authorization](#authorization)
 - [Translations](#translations)
 - [Naming classes](#naming-classes)
+- [Naming migrations](#naming-migrations)
 
 Laravel & PHP
 Artisanal baked code
@@ -723,3 +724,14 @@ e.g. PublishScheduledPostsCommand
 Again to avoid naming collisions we'll suffix mailables with Mail, as they're often used to convey an event, action or question.
 
 e.g. AccountActivatedMail or NewEventMail
+
+#Naming Migrations
+[table]_[action]_[details]
+### creation of table
+customers_create
+
+### alter table
+customers_alter_add_id
+
+### seed data
+customers_seed_add_test
