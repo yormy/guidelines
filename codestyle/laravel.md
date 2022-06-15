@@ -21,6 +21,12 @@
 - [Naming classes](#naming-classes)
 - [Naming migrations](#naming-migrations)
 
+Suffixes
+| Type | Suffix |
+|------|-------|
+| Listener | ...Listener |
+
+
 Laravel & PHP
 Artisanal baked code
 # About Laravel
