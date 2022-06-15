@@ -25,7 +25,22 @@ Suffixes
 | Type | Suffix |
 |------|-------|
 | Listener | ...Listener |
+| Job      | ...Job |
+| Mailable | ...Mailable |
+| Event    | ...Event |
+| Subscriber | ...Subscriber |
+| Mail <blade> | ...Mail |
+| Command | ...Command |
+| Notification | ...Notification |
+| Exception | ...Exception |
+| Resource   | ...Resource |
+| Resource Collection | ...Collection |
+| Request | ... Request |
+| Rule | ...Rule |
 
+  DTA / ValueObject ?
+  Re
+  
 
 Laravel & PHP
 Artisanal baked code
