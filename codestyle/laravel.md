@@ -41,6 +41,16 @@ Suffixes
   DTA / ValueObject ?
   Re
   
+Ie. 
+RegistrationSubscriber
+  NewCustomerRegisteredEvent
+  SendWelcomeMailListener
+
+SendWelcomeMailListener
+  queue SendWelcomeMailJob  
+  
+SendWelcomeMailJob
+  email WelcomeMail
 
 Laravel & PHP
 Artisanal baked code
