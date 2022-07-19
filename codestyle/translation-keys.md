@@ -10,28 +10,6 @@ and this makes it obvious that the key is not yet defined
 
 We will be using only key based translations for this reason
 
-## Tips and Tricks
-### Capitalization
-The translation engine supports the capitalization of certain words really easy
-
-```
-'welcome' => 'Welcome, :name',
-
-echo __('messages.welcome', ['name' => 'dayle']);
-```
-
-```
-'welcome' => 'Welcome, :NAME', // Welcome, DAYLE
-'welcome' => 'Welcome, :Name', // Welcome, Dayle
-'welcome' => 'Welcome, :name', // Welcome, dayle
-```
-
-### Plurilization
-There are many pluralization options to make your live as a developer easier
-```
-https://laravel.com/docs/9.x/localization#pluralization
-```
-
 
 ## Laravel
 
@@ -326,71 +304,89 @@ Alternative, as in many cases this might be the same, you can reuse one of the t
 ```
 
 
+# Models
+A large part of an application in the ability to create, show and list model data.
+For example if we look at a user_registration table, represented in the UserRegistration model.
+Then you quickly have the following pages
+* lists all the data in a table with headings
+* see a single registration
+* create a new registration
+* action to delete a registration
 
-
-
-
-
-Filename is the name of the MODEL Namespace is the same package as the model is defined All objects are signular
-## pages (index/ show ?
-# MODEL based text
-
-```
-{
-    "user_registration:" : {
-        "index" : {
-            "title" : "All registrations"
-            "subtitle" : "the registrations and states of the registrations"
-            "description" : ""
-        }
-        "show" : {
-            "title" : "Your registration"
-            "subtitle" : "your information that you entered"
-            "description" : ""
-        }
-        "edit" : {
-            "title" : "Your registration"
-            "subtitle" : "your information that you entered"
-            "description" : ""
-        }
-        "delete" : {
-            "confirm_message" : "Are you sure you want to delete this registration?"
-        }
+When we take REST namings we can a structure like this which keeps all the relevant translations close together
+```php
+// user_registration.php
+[
+        "index" => [
+            "title" => "All registrations"
+            "subtitle" => "the registrations and states of the registrations"
+            "description" => ""
+        ],
+        "show" => [
+            "title" => "Your registration"
+            "subtitle" => "your information that you entered"
+            "description" => ""
+        ],
+        "edit" => [
+            "title" => "Your registration"
+            "subtitle" => "your information that you entered"
+            "description" => ""
+        ],
+        "delete" => [
+            "confirm_message" => "Are you sure you want to delete this registration?"
+        ],
             
-        "field" : {
-            "password" : {
-                "label" : "Your password",
-                "hint" : "must be 8 characters"
-                "explain" : "This is additional explain info, usually in a popup"
-                "error" : {
-                    "incorrect_credentials" : "Does not match our system
-                }
+        "field" => [
+            "password" => [
+                "label" => "Your password",
+                "hint" => "must be 8 characters"
+                "mouseover" => "This is additional explain info, usually in a popup"
+                "error" => [
+                    "incorrect_credentials" => "Does not match our system"
+                ],
                 
-                "input" : {
-                    "label" : "Create your password"
-                    "hint" : "must be 8 characters"
-                    "explain" : "This is additional explain info, usually in a popup"
-                    "error" : {
-                        "invalid_chars" : incorrect number of characters, come up with a more complex"
-                    }
-            }
-        }
-    }
-}
+                "input" => [
+                    "label" => "Create your password"
+                    "hint" => "must be 8 characters"
+                    "mouseover" => "This is additional explain info, usually in a popup"
+                    "error" => [
+                        "invalid_chars" => "incorrect number of characters, come up with a more complex"
+                    ],
+            ],
+        ],
+    ],
+],
 ```
 
-# NON model based text
+## Tips and Tricks
 
-ie a page
+### Capitalization
+The translation engine supports the capitalization of certain words really easy
+
+```
+'welcome' => 'Welcome, :name',
+
+echo __('messages.welcome', ['name' => 'dayle']);
+```
+
+```
+'welcome' => 'Welcome, :NAME', // Welcome, DAYLE
+'welcome' => 'Welcome, :Name', // Welcome, Dayle
+'welcome' => 'Welcome, :name', // Welcome, dayle
+```
+
+### Plurilization
+There are many pluralization options to make your live as a developer easier
+```
+https://laravel.com/docs/9.x/localization#pluralization
+```
+
+### Currency
+Take a look at php ```NumberFormatter::CURRENCY ```
 
 
 
-# TODO 
-```<?php
-$currency1 = NumberFormatter::create('fr', NumberFormatter::CURRENCY);
-$currency2 = NumberFormatter::create('en_US', NumberFormatter::CURRENCY);```
-
-# Questions
-On one hand I think it is good to not touch the standard laravel translations at all, so if they are updated, then this can be done without any issue or thinking
-on the other hand, then we need to create a second ``` validation.php``` for custom validations.
-Hmm.. don't know yet
+# Resources
+https://lokalise.com/blog/translation-keys-naming-and-organizing/
+https://github.com/akaunting/akaunting/tree/master/resources/lang/en-US
+https://lokalise.com/blog/laravel-localization-step-by-step/
