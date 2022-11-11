@@ -4,5 +4,12 @@ https://v2.vuejs.org/v2/style-guide/?redirect=true
 # Event
 Name the click event onActionHandler
 ie 
-@click="onDeleteHandler"
+```@click="onDeleteHandler"```
+
 This is the handler when the user clicks delete
+
+# Code Order
+* script code
+* template code
+* styling code
+
