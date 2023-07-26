@@ -6,12 +6,23 @@
 
 #Naming
 test function naming
-test_<SystemState>_<SubjectUnderTest>_<ExpectedResult>
-
+test_<State>_<Action>_<Result>
 example
 ```
 test_CustomerActive_MakeInactive_EmailSent
 ```
+
+
+or
+<State>_<Action>_<Result>
+example
+```
+UserBanned_Login_Failed
+UserBanned_Login_AdminNotified
+```
+
+
+
 
 # Test classes
 If you need a specific class for your test cases, you should keep them within the same test file when possible. When you want to reuse test classes throughout tests, it's fine to make a dedicated class instead. Here's an example of internal classes:

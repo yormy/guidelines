@@ -103,13 +103,14 @@ Concatination
 * never concatinate strings on the screen to display what you want. This leads to problems in some language where the order of wordings is different.
 
 **BAD**:
+
 ```php
-echo __('hello') . __('and welcome'); // Hello and welcome
+echo translation-keys.md__('hello') . __('and welcome'); // Hello and welcome
 // in other languages this might be wierd and you need to say something like 'Welcome and hello'
 ```
 
 ```php
-echo __('hello') . $username; // Hello Dyale
+echo translation-keys.md__('hello') . $username; // Hello Dyale
 // in other languages this might be wierd and you need to say something like 'Dayle, hello'
 ```
 
