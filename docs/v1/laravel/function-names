@@ -1,0 +1,22 @@
+## Function names for repositories
+
+## Get... (getUsers)
+Returns a collection of models
+
+### GetUsersById
+Returns a collection of users
+
+## Find ... (findUser..) 
+Returns a model or null
+
+### find..OrFail
+Returns a model or throws an exception
+
+### find ... ById
+Returns a model based on the Id (by name)
+
+### queryUsers
+Aka a scope, returns a builder
+
+## function Posts() / function Post()
+returns a relationship to many or one
