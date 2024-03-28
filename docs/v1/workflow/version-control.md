@@ -30,7 +30,8 @@ There's no strict ruling on feature branch names, just make sure it's clear enou
 
 Bad: feature/mailchimp, random-things, develop
 Good: feature-mailchimp, fix-deliverycosts or updates-june-2016
-#PULL REQUESTS
+
+# PULL REQUESTS
 Merging branches via GitHub pull requests isn't a requirement, but can be useful if:
 
 You want a peer to review your changes
@@ -39,7 +40,7 @@ Future you wants a quick way to retrieve that point in history by browsing passe
 #MERGING AND REBASING
 Ideally, rebase your branch regularly to reduce the chance of merge conflicts.
 
-If you want to deploy a feature branch to main, use git merge <branch> --squash
+If you want to deploy a feature branch to main, use git merge {branch} --squash
 If your push is denied, rebase your branch first using git rebase
 #Commits
 There's not strict ruling on commits in projects in initial development, however, descriptive commit messages are recommended. After a project has gone live, descriptive commit messages are required. Always use present tense in commit messages.
@@ -54,21 +55,24 @@ Better: Fix add to cart button, Fix cart count on home
 #CREATING GRANULAR COMMITS WITH patch
 If you've made multiple changes but want to split them into more granular commits, use git add -p. This will open an interactive session in which you can choose which chunks you want to stage for your commit.
 
-#MOVING COMMITS TO A NEW BRANCH
+# MOVING COMMITS TO A NEW BRANCH
 First, create your new branch, then revert the current branch, and finally checkout the new branch.
 
 Don't do this to commits that have already been pushed without double checking with your collaborators!
 
+```
 git branch my-branch
-git reset --hard HEAD~3 # OR git reset --hard <commit>
+git reset --hard HEAD~3 # OR git reset --hard <commit
 git checkout my-branch
+```
+
 #SQUASHING COMMITS ALREADY PUSHED
 Only execute when you are sure that no-one else pushed changes during your commits.
 
 First, copy the SHA from the commit previous to your commits that need to be squashed.
 
-git reset --soft <commit>
+git reset --soft {commit}
 git commit -m "your new message"
 git push --force
-#CLEANING UP LOCAL BRANCHES
+# CLEANING UP LOCAL BRANCHES
 After a while, you'll end up with a few stale branches in your local repository. Branches that don't exist upstream can be cleaned up with git remote prune origin. If you want to ensure you're not about to delete something important, add a --dry-run flag.
