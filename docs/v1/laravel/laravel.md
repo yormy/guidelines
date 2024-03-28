@@ -29,7 +29,7 @@ Suffixes
 | Mailable | ...Mailable |
 | Event    | ...Event |
 | Subscriber | ...Subscriber |
-| Mail <blade> | ...Mail |
+| Mail {blade} | ...Mail |
 | Command | ...Command |
 | Notification | ...Notification |
 | Exception | ...Exception |
