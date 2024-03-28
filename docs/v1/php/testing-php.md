@@ -6,7 +6,7 @@
 
 #Naming
 test function naming
-test_<State>_<Action>_<Result>
+test_{State}_{ActionBeingTested}_{ResultExpected}
 example
 ```
 test_CustomerActive_MakeInactive_EmailSent
@@ -14,7 +14,7 @@ test_CustomerActive_MakeInactive_EmailSent
 
 
 or
-<State>_<Action>_<Result>
+{State}_{ActionBeingTested}_{ResultExpected}
 example
 ```
 UserBanned_Login_Failed
