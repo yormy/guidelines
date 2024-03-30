@@ -834,6 +834,19 @@ Events will often be fired before or after the actual event. This should be very
 E.g. ApprovingLoan before the action is completed and LoanApproved after the action is completed.
 ```
 
+```
+OrderShipped::dispatch($order)
+event(new OrderShipped($order, $date)
+```
+
+Events and jobs should contain all the plain data it needs to handle it. So no models or relations being passed.
+Prefer not to use models, as this reduces the ability to have a event system handling this
+```
+eg: An event to send out an email should contain the email, name of the user, not the user model.
+```
+
+
+
 # LISTENERS
 Listeners will perform an action based on an incoming event. Their name should reflect that action with a Listener suffix. This might seem strange at first but will avoid naming collisions with jobs.
 ```

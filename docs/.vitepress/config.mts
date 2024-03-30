@@ -35,6 +35,9 @@ export default defineConfig({
                 text: 'Misc',
                 items: [
                     {text: 'Exceptions', link: '/v1/misc/exceptions'},
+                    {text: 'Caching', link: '/v1/misc/caching'},
+                    {text: 'Domain Driven', link: '/v1/misc/domain-driven'},
+                    {text: 'Webhooks', link: '/v1/misc/webhooks'},
                 ]
             },
             {
