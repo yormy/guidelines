@@ -15,3 +15,8 @@ If a class grows bigger, consider splitting responsibilities into smaller classe
 
 ## Method/function length
 Keep methods focused and short, ideally under 20–40 lines. This makes them easier to read and test.
+
+## Multilingual
+Setup the system in a way that supports multilingual app. Do not use hardcoded text. Use key-value for text translations, whereby each language has its own translation files
+In the code you use the key, and the language file specifies the content.
+The default language is english

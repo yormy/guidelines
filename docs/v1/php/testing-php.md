@@ -6,10 +6,10 @@
 
 #Naming
 test function naming
-test_{State}_{ActionBeingTested}_{ResultExpected}
+{State}_{ActionBeingTested}_{ResultExpected}
 example
 ```
-test_CustomerActive_MakeInactive_EmailSent
+customerActive_MakeInactive_EmailSent
 ```
 
 
