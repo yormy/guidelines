@@ -9,6 +9,7 @@ UX Best practices
 - Accessibility: Screen reader support, proper contrast ratios
 - Microinteractions: feedback for user actions
 - Empty state: guidance when no data exists
+- Brainstorm various screen states, like when there is no data, or when the backend is slow or unresponsive
 - 
 ## 1. Structure and Layout
 

@@ -1,0 +1,4 @@
+Naming conventions
+Style guides
+Coding conventions
+Personal style guide
